@@ -16,6 +16,12 @@
 
 ## 4. 使用方法：
 
+- 下载本项目
+
+```shell
+git clone https://github.com/zhangpy0/AI_AutoTarget.git
+```
+
 - 安装依赖
 
 ```shell
