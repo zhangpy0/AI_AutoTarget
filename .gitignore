@@ -1,0 +1,10 @@
+# .gitignore
+
+img/*
+taged/*
+
+dataset/test/*
+dataset/train/*
+dataset/valid/*
+
+*/__pycache__

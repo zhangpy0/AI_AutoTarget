@@ -1,0 +1,16 @@
+train: ../train/images
+val: ../valid/images
+test: ../test/images
+
+kpt_shape: [1, 3]
+flip_idx: [0]
+
+nc: 1
+names: ['person']
+
+roboflow:
+  workspace: zhangpy
+  project: cheat-eze54
+  version: 1
+  license: MIT
+  url: https://universe.roboflow.com/zhangpy/cheat-eze54/dataset/1
