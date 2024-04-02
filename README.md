@@ -7,6 +7,7 @@
 ## 2. 项目简介：
 
 - 本项目基于YOLOv8 [ultralytics YOLOv8](https://github.com/ultralytics/ultralytics)
+- 使用win32 api bitblt截图，获取游戏画面
 - 通过YOLOv8-pose 关键点检测预训练模型，进一步进行自定义数据集训练，获取最佳射击点
 - 使用c语言,win32 api编译的鼠标控制程序
 

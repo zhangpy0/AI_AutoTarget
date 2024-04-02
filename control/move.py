@@ -6,7 +6,7 @@ import os
 extern "C" {
     DLL_EXPORT void move_relpix(int x, int y);
     DLL_EXPORT void move_gamepix(int x, int y);
-    DLL_EXPORT void move_smooth(int x, int y);
+    DLL_EXPORT void move_smooth(int x, int y, int n);
 }
 '''
 class MouseMove:
@@ -20,7 +20,7 @@ class MouseMove:
         self.move_dll.move_relpix.restype = None
         self.move_dll.move_gamepix.argtypes = [ctypes.c_int, ctypes.c_int]
         self.move_dll.move_gamepix.restype = None
-        self.move_dll.move_smooth.argtypes = [ctypes.c_int, ctypes.c_int]
+        self.move_dll.move_smooth.argtypes = [ctypes.c_int, ctypes.c_int, ctypes.c_int]
         self.move_dll.move_smooth.restype = None
 
     def rel_pos(self, best_pos):
@@ -39,11 +39,11 @@ class MouseMove:
         best_pos = self.rel_pos(best_pos)
         self.move_dll.move_gamepix(ctypes.c_int(best_pos[0]), ctypes.c_int(best_pos[1]))
 
-    def move_smooth(self, best_pos):
+    def move_smooth(self, best_pos, n = 50):
         if best_pos is None:
             return
         best_pos = self.rel_pos(best_pos)
-        self.move_dll.move_smooth(ctypes.c_int(best_pos[0]), ctypes.c_int(best_pos[1]))
+        self.move_dll.move_smooth(ctypes.c_int(best_pos[0]), ctypes.c_int(best_pos[1]), ctypes.c_int(n))
 
 # def move(best_pos):
 #     center_pos = np.array([640, 400])
@@ -73,14 +73,15 @@ class MouseMove:
 if __name__ == '__main__':
     import time
     mouse_move = MouseMove()
+    # now = time.time()
+    # mouse_move.move_relpix([800, 800])
+    # print('Time elapsed:', time.time() - now)
+    # now = time.time()
+    # mouse_move.move_gamepix([800, 800])
+    # print('Time elapsed:', time.time() - now)
+    time.sleep(5)
     now = time.time()
-    mouse_move.move_relpix([800, 800])
-    print('Time elapsed:', time.time() - now)
-    now = time.time()
-    mouse_move.move_gamepix([800, 800])
-    print('Time elapsed:', time.time() - now)
-    now = time.time()
-    mouse_move.move_smooth([800, 800])
+    mouse_move.move_smooth(np.array([800.1, 800.2]))
     print('Time elapsed:', time.time() - now)
     
     

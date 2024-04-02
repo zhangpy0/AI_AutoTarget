@@ -18,14 +18,17 @@ def main():
     mouse_move = control.move.MouseMove()
 
     while True:
-        if not listener.tag_shift:
-            listener.tag_x1 = False
-        if listener.tag_x1 and listener.tag_shift:
+        if listener.tag_shift:
             img = process.capture.window_capture2mat()
             best_pos = yolo_pre.bestshot(img)
+            print(f'best_pos: {best_pos}')
+
             if best_pos is not None:
+                print('开始移动鼠标')
                 mouse_move.move_smooth(best_pos)
+                print('鼠标移动完成')
             time.sleep(0.1)
 
 if __name__ == '__main__':
     main()
+    

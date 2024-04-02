@@ -31,9 +31,9 @@ class Listener:
             return False
         
     def start(self):
-        self.mouse_listener.start()
+        # self.mouse_listener.start()
         self.keyboard_listener.start()
-        self.mouse_listener.join()
+        # self.mouse_listener.join()
         self.keyboard_listener.join()
 
 if __name__ == '__main__':
